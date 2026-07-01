@@ -1,0 +1,74 @@
+/* ---------- Reset ---------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+    background:#d9dbd5;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Green strip at top */
+
+body::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:130px;
+    background:#00a884;
+    z-index:-1;
+}
+
+/* Main Application */
+
+.app{
+
+    width:95%;
+    height:95vh;
+
+    margin:20px auto;
+
+    display:flex;
+
+    background:white;
+
+    box-shadow:0 2px 15px rgba(0,0,0,.25);
+
+}
+
+/* Sidebar */
+
+.sidebar{
+
+    width:35%;
+
+    border-right:1px solid #ddd;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#fff;
+
+}
+
+/* Chat Area */
+
+.chat-area{
+
+    width:65%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#efeae2;
+
+}

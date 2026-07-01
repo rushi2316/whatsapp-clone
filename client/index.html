@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WhatsApp Clone</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chat.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ===================== -->
+        <!-- SIDEBAR -->
+        <!-- ===================== -->
+
+        <div class="sidebar">
+
+            <!-- Header -->
+            <div class="sidebar-header">
+
+                <img src="https://i.pravatar.cc/150?img=12"
+                    class="profile-pic">
+
+                <div class="header-icons">
+
+                    <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-circle-notch"></i>
+                    <i class="fa-solid fa-message"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                </div>
+
+            </div>
+
+            <!-- Search -->
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+    type="text"
+    id="searchInput"
+    placeholder="Search or start new chat">
+
+            </div>
+
+            <!-- Chat List -->
+
+            <div class="chat-list">
+
+                <!-- John -->
+
+                <div class="chat-item active"
+                    data-user="john">
+
+                    <img src="https://i.pravatar.cc/150?img=5">
+
+                    <div class="chat-details">
+
+                        <div class="top-row">
+
+                            <h4>John Doe</h4>
+
+                            <span class="chat-time">
+                                10:30 AM
+                            </span>
+
+                        </div>
+
+                        <p class="last-message">
+                            Hello 👋
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Alice -->
+
+                <div class="chat-item"
+                    data-user="alice">
+
+                    <img src="https://i.pravatar.cc/150?img=8">
+
+                    <div class="chat-details">
+
+                        <div class="top-row">
+
+                            <h4>Alice</h4>
+
+                            <span class="chat-time">
+                                9:40 AM
+                            </span>
+
+                        </div>
+
+                        <p class="last-message">
+                            Let's meet today.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- David -->
+
+                <div class="chat-item"
+                    data-user="david">
+
+                    <img src="https://i.pravatar.cc/150?img=15">
+
+                    <div class="chat-details">
+
+                        <div class="top-row">
+
+                            <h4>David</h4>
+
+                            <span class="chat-time">
+                                Yesterday
+                            </span>
+
+                        </div>
+
+                        <p class="last-message">
+                            😂😂😂
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- END SIDEBAR -->
+
+        <!-- ===================== -->
+        <!-- CHAT AREA -->
+        <!-- ===================== -->
+
+        <div class="chat-area">
+
+            <!-- Chat Header -->
+
+            <div class="chat-header">
+
+                <div class="chat-user">
+
+                    <img
+                        id="chatImage"
+                        src="https://i.pravatar.cc/150?img=5">
+
+                    <div>
+
+                        <h3 id="chatName">
+                            John Doe
+                        </h3>
+
+                        <small id="chatStatus">
+                            Online
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="chat-icons">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <i class="fa-solid fa-paperclip"></i>
+
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                </div>
+
+            </div>
+
+            <!-- Messages -->
+
+            <div
+                class="messages"
+                id="messages">
+
+            </div>
+
+            <!-- Message Input -->
+
+            <div class="message-input">
+
+                <i class="fa-regular fa-face-smile"></i>
+
+                <input
+                    id="messageInput"
+                    type="text"
+                    placeholder="Type a message">
+
+                <button id="sendBtn">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+        <!-- END CHAT AREA -->
+
+    </div>
+    <!-- END APP -->
+
+    <!-- JavaScript -->
+
+    <script src="js/contacts.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/search.js"></script>
+
+</body>
+
+</html>
