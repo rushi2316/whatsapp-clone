@@ -388,3 +388,82 @@
     font-size:18px;
 
 }
+/* ===========================
+   EMOJI PICKER
+=========================== */
+
+.emoji-picker{
+
+    position:absolute;
+
+    bottom:80px;
+
+    left:20px;
+
+    width:250px;
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:10px;
+
+    display:none;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+
+}
+
+.emoji-picker span{
+
+    cursor:pointer;
+
+    font-size:24px;
+
+}
+
+.message-input{
+
+    position:relative;
+
+}
+/* Voice Button */
+
+#voiceBtn{
+
+    width:45px;
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#00a884;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+#voiceBtn i{
+
+    color:white;
+
+}
+
+/* Attachment */
+
+#attachBtn{
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    color:#54656f;
+
+}

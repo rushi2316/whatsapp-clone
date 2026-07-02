@@ -4,6 +4,7 @@
 
 const input = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
+const voiceBtn = document.getElementById("voiceBtn");
 const messages = document.getElementById("messages");
 
 const chatName = document.getElementById("chatName");
@@ -98,6 +99,7 @@ function sendMessage() {
     chats[currentUser].time = getCurrentTime();
 
     updateSidebar();
+    sendSocketMessage(text);
     saveChats();
 
     input.value = "";
@@ -182,11 +184,11 @@ chatItems.forEach(item => {
 
         });
 
-        item.classList.add("active");
+ currentUser = item.dataset.user;
 
-        currentUser = item.dataset.user;
+joinRoom(currentUser);
 
-        loadConversation();
+loadConversation();
 
     });
 
@@ -200,3 +202,21 @@ loadChats();
 loadConversation();
 
 updateSidebar();
+
+joinRoom(currentUser);
+input.addEventListener("input", () => {
+
+    if(input.value.trim() === ""){
+
+        sendBtn.style.display = "none";
+        voiceBtn.style.display = "block";
+
+    }
+    else{
+
+        sendBtn.style.display = "block";
+        voiceBtn.style.display = "none";
+
+    }
+
+});

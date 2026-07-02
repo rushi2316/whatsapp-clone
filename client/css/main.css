@@ -72,3 +72,113 @@ body::before{
     background:#efeae2;
 
 }
+/* =======================
+   DARK MODE
+======================= */
+
+body.dark{
+
+    background:#111b21;
+
+}
+
+body.dark::before{
+
+    background:#202c33;
+
+}
+
+body.dark .sidebar{
+
+    background:#202c33;
+
+}
+
+body.dark .sidebar-header{
+
+    background:#202c33;
+
+}
+
+body.dark .search-box{
+
+    background:#111b21;
+
+}
+
+body.dark .search-box input{
+
+    background:#2a3942;
+
+    color:white;
+
+}
+
+body.dark .chat-item{
+
+    color:white;
+
+}
+
+body.dark .chat-item:hover{
+
+    background:#2a3942;
+
+}
+
+body.dark .chat-item.active{
+
+    background:#2a3942;
+
+}
+
+body.dark .chat-area{
+
+    background:#0b141a;
+
+}
+
+body.dark .chat-header{
+
+    background:#202c33;
+
+}
+
+body.dark .message-input{
+
+    background:#202c33;
+
+}
+
+body.dark .message-input input{
+
+    background:#2a3942;
+
+    color:white;
+
+}
+
+body.dark .received{
+
+    background:#202c33;
+
+    color:white;
+
+}
+
+body.dark .sent{
+
+    background:#005c4b;
+
+    color:white;
+
+}
+
+body.dark h3,
+body.dark h4,
+body.dark p,
+body.dark small{
+
+    color:white;
+
+}
