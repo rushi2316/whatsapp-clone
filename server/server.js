@@ -6,94 +6,224 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 
 const connectDB = require("./config/db");
+
 const authRoutes = require("./routes/authRoutes");
+const conversationRoutes = require("./routes/conversationRoutes");
+const messageRoutes = require("./routes/messageRoutes");
+
+// NEW
+const User = require("./models/User");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// Authentication Routes
+// ------------------------------
+// Routes
+// ------------------------------
+
 app.use("/api/auth", authRoutes);
-
-const server = http.createServer(app);
-
-const io = new Server(server, {
-    cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
-});
-
-// Store current room of each socket
-const userRooms = {};
+app.use("/api/conversations", conversationRoutes);
+app.use("/api/messages", messageRoutes);
 
 // ------------------------------
 // Test Route
 // ------------------------------
+
 app.get("/", (req, res) => {
     res.send("🚀 WhatsApp Clone Backend is Running!");
 });
 
 // ------------------------------
+// HTTP Server
+// ------------------------------
+
+const server = http.createServer(app);
+
+// ------------------------------
 // Socket.IO
 // ------------------------------
+
+const io = new Server(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+    },
+});
+
+// ------------------------------
+// Online Users
+// ------------------------------
+
+const onlineUsers = {};
+
+app.set("io", io);
+app.set("onlineUsers", onlineUsers);
+
+// ------------------------------
+// Socket Connection
+// ------------------------------
+
 io.on("connection", (socket) => {
 
     console.log("✅ User Connected:", socket.id);
 
-    socket.emit("welcome", "Welcome to WhatsApp Clone!");
+    // ------------------------------
+    // User Logged In
+    // ------------------------------
 
-    socket.on("joinRoom", (room) => {
+    socket.on("userConnected", async (userId) => {
 
-        if (userRooms[socket.id]) {
+        onlineUsers[userId] = socket.id;
 
-            socket.leave(userRooms[socket.id]);
+        try {
 
-            console.log(`${socket.id} left ${userRooms[socket.id]}`);
+            await User.findByIdAndUpdate(userId, {
+                isOnline: true
+            });
+
+        } catch (err) {
+
+            console.error("❌ Error updating online status:", err.message);
 
         }
 
-        socket.join(room);
+        console.log("🟢 Online Users");
+        console.log(onlineUsers);
 
-        userRooms[socket.id] = room;
-
-        console.log(`${socket.id} joined ${room}`);
+        io.emit("onlineUsers", Object.keys(onlineUsers));
 
     });
+
+    // ------------------------------
+    // Welcome
+    // ------------------------------
+
+    socket.emit(
+        "welcome",
+        "Welcome to WhatsApp Clone!"
+    );
+
+    // ------------------------------
+    // Join Conversation
+    // ------------------------------
+
+    socket.on("joinRoom", (conversationId) => {
+
+        socket.join(conversationId);
+
+        console.log(`${socket.id} joined ${conversationId}`);
+
+    });
+
+    // ------------------------------
+    // Send Message
+    // ------------------------------
 
     socket.on("sendMessage", (message) => {
 
-        console.log("📨", message);
+        console.log("📨 Message Received");
 
-        console.log("Broadcasting to room:", message.room);
-
-        io.to(message.room).emit("receiveMessage", message);
+        io.to(message.conversationId).emit(
+            "receiveMessage",
+            message
+        );
 
     });
 
-    socket.on("disconnect", () => {
+    // ------------------------------
+    // Disconnect
+    // ------------------------------
 
-        delete userRooms[socket.id];
+    socket.on("disconnect", async () => {
+
+        let disconnectedUser = null;
+
+        for (const userId in onlineUsers) {
+
+            if (onlineUsers[userId] === socket.id) {
+
+                disconnectedUser = userId;
+
+                delete onlineUsers[userId];
+
+                break;
+
+            }
+
+        }
+
+        if (disconnectedUser) {
+
+            try {
+
+                const lastSeen = new Date();
+
+await User.findByIdAndUpdate(disconnectedUser, {
+
+    isOnline: false,
+
+    lastSeen
+
+});
+
+// Tell everyone when this user was last seen
+io.emit("userLastSeen", {
+
+    userId: disconnectedUser,
+
+    lastSeen
+
+});
+
+            } catch (err) {
+
+                console.error("❌ Error updating last seen:", err.message);
+
+            }
+
+        }
 
         console.log("❌ User Disconnected:", socket.id);
 
+        console.log("🟢 Online Users");
+        console.log(onlineUsers);
+
+        io.emit("onlineUsers", Object.keys(onlineUsers));
+
     });
 
 });
 
 // ------------------------------
-// Connect Database
-// ------------------------------
-connectDB();
-
 // ------------------------------
 // Start Server
 // ------------------------------
+
 const PORT = process.env.PORT || 3000;
 
-server.listen(PORT, () => {
+async function startServer() {
 
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    try {
 
-});
+        await connectDB();
+
+        server.listen(PORT, () => {
+
+            console.log(`🚀 Server running on http://localhost:${PORT}`);
+
+        });
+
+    } catch (err) {
+
+        console.error("❌ Failed to start server");
+        console.error(err);
+
+        process.exit(1);
+
+    }
+
+}
+
+startServer();

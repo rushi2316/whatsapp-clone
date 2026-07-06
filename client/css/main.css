@@ -182,3 +182,86 @@ body.dark small{
     color:white;
 
 }
+/* ======================================
+   LOGOUT MENU
+====================================== */
+
+.sidebar-header{
+
+    position: relative;
+
+}
+
+.logout-menu{
+
+    position: absolute;
+
+    top: 60px;
+
+    right: 10px;
+
+    width: 170px;
+
+    background: #ffffff;
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+    overflow: hidden;
+
+    display: none;
+
+    z-index: 999;
+
+}
+
+.logout-menu button{
+
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 14px 16px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.logout-menu button:hover{
+
+    background: #f2f2f2;
+
+}
+
+/* ======================================
+   DARK MODE SUPPORT
+====================================== */
+
+body.dark .logout-menu{
+
+    background: #2a3942;
+
+}
+
+body.dark .logout-menu button{
+
+    color: white;
+
+}
+
+body.dark .logout-menu button:hover{
+
+    background: #3b4a54;
+
+}

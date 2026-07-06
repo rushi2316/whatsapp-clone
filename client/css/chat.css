@@ -257,54 +257,91 @@
 .messages{
 
     flex:1;
-
     padding:20px;
-
     overflow-y:auto;
-
     display:flex;
-
     flex-direction:column;
-
     gap:12px;
-
     background:#efeae2;
 
 }
 
-/* Message Bubble */
+/* ==========================
+   MESSAGE BUBBLE
+========================== */
 
 .message{
 
-    max-width:60%;
-
-    padding:10px 15px;
-
-    border-radius:8px;
-
+    max-width:65%;
+    padding:10px 12px 8px;
+    border-radius:10px;
     font-size:15px;
-
     line-height:1.5;
+    word-wrap:break-word;
+    position:relative;
 
 }
-
-/* Received */
 
 .received{
 
     background:white;
-
     align-self:flex-start;
 
 }
 
-/* Sent */
-
 .sent{
 
     background:#d9fdd3;
-
     align-self:flex-end;
+
+}
+
+/* ==========================
+   MESSAGE TEXT
+========================== */
+
+.message-text{
+
+    white-space:pre-wrap;
+    padding-right:55px;
+
+}
+
+/* ==========================
+   MESSAGE FOOTER
+========================== */
+
+.message-footer{
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:5px;
+    margin-top:4px;
+
+}
+
+.message-time{
+
+    font-size:11px;
+    color:#667781;
+
+}
+
+/* ==========================
+   MESSAGE STATUS
+========================== */
+
+.message-status{
+
+    font-size:13px;
+    color:#667781;
+
+}
+
+.message-status.seen{
+
+    color:#53bdeb;
 
 }
 
@@ -465,5 +502,42 @@
     cursor:pointer;
 
     color:#54656f;
+
+}
+/* ==========================
+   ONLINE INDICATOR
+========================== */
+
+.top-row h4{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.online-dot{
+
+    width:10px;
+
+    height:10px;
+
+    background:#25D366;
+
+    border-radius:50%;
+
+    display:inline-block;
+
+    flex-shrink:0;
+
+}
+
+.last-message.online{
+
+    color:#25D366;
+
+    font-weight:500;
 
 }

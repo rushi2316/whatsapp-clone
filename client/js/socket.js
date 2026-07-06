@@ -4,21 +4,39 @@
 
 const socket = io("http://localhost:3000");
 
+// ======================================
+// CONNECT
+// ======================================
+
 socket.on("connect", () => {
 
     console.log("✅ Connected to Server");
     console.log("Socket ID:", socket.id);
 
-    // Join current chat when connected
-    joinRoom(currentUser);
+    if (appState.currentUser) {
+
+        socket.emit(
+            "userConnected",
+            appState.currentUser._id
+        );
+
+    }
 
 });
+
+// ======================================
+// WELCOME
+// ======================================
 
 socket.on("welcome", (message) => {
 
     console.log(message);
 
 });
+
+// ======================================
+// DISCONNECT
+// ======================================
 
 socket.on("disconnect", () => {
 
@@ -27,14 +45,75 @@ socket.on("disconnect", () => {
 });
 
 // ======================================
+// STORE ONLINE USERS
+// ======================================
+
+socket.on("onlineUsers", (users) => {
+
+    console.log("🟢 Online Users:", users);
+
+    // Store the latest online users list
+    appState.onlineUsers = users;
+
+    // Update every user's online status
+    if (appState.users.length > 0) {
+
+        appState.users.forEach(user => {
+
+            user.isOnline = users.includes(user._id);
+
+        });
+
+        // Refresh sidebar
+        renderUsers();
+
+        // Refresh chat header if a chat is open
+        if (appState.selectedUser) {
+
+            updateChatHeader();
+
+        }
+
+    }
+
+});
+// ======================================
+// USER LAST SEEN
+// ======================================
+
+socket.on("userLastSeen", ({ userId, lastSeen }) => {
+
+    console.log("🕒 Last Seen Updated:", userId);
+
+    const user = appState.users.find(
+        u => u._id === userId
+    );
+
+    if (!user) return;
+
+    user.lastSeen = lastSeen;
+    user.isOnline = false;
+
+    renderUsers();
+
+    if (
+        appState.selectedUser &&
+        appState.selectedUser._id === userId
+    ) {
+        updateChatHeader();
+    }
+
+});
+
+// ======================================
 // JOIN ROOM
 // ======================================
 
-function joinRoom(room) {
+function joinRoom(conversationId) {
 
-    socket.emit("joinRoom", room);
+    socket.emit("joinRoom", conversationId);
 
-    console.log("📥 Joined Room:", room);
+    console.log("📥 Joined:", conversationId);
 
 }
 
@@ -42,16 +121,9 @@ function joinRoom(room) {
 // SEND MESSAGE
 // ======================================
 
-function sendSocketMessage(text) {
+function sendSocketMessage(message) {
 
-    socket.emit("sendMessage", {
-
-        room: currentUser,
-        senderId: socket.id,
-        text: text,
-        time: new Date().toLocaleTimeString()
-
-    });
+    socket.emit("sendMessage", message);
 
 }
 
@@ -59,31 +131,42 @@ function sendSocketMessage(text) {
 // RECEIVE MESSAGE
 // ======================================
 
-socket.on("receiveMessage", (message) => {
+socket.on("receiveMessage", async (message) => {
 
-    console.log("📩 Received:", message);
+    console.log("📩 New Message");
+    console.log(message);
 
-    // Ignore your own echoed message
-    if (message.senderId === socket.id) return;
+    if (appState.selectedUser) {
 
-    // Ignore messages for other rooms
-    if (message.room !== currentUser) return;
+        appState.conversations[appState.selectedUser._id] = {
 
-    // Save message
-    chats[currentUser].messages.push({
+            lastMessage: message.text,
 
-        text: message.text,
-        type: "received"
+            time: new Date().toLocaleTimeString([], {
 
-    });
+                hour: "2-digit",
+                minute: "2-digit"
 
-    chats[currentUser].lastMessage = message.text;
-    chats[currentUser].time = message.time;
+            })
 
-    saveChats();
+        };
 
-    updateSidebar();
+        renderUsers();
 
-    loadConversation();
+    }
+
+    if (
+
+        !appState.currentConversation ||
+
+        message.conversationId !== appState.currentConversation._id
+
+    ) {
+
+        return;
+
+    }
+
+    await loadMessages();
 
 });
