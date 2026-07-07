@@ -158,3 +158,10 @@ button:hover{
     text-decoration:underline;
 
 }
+.project-note {
+    font-size: 12px;
+    color: #9ca3af;
+    text-align: center;
+    margin: 8px 20px 16px;
+    line-height: 1.5;
+}

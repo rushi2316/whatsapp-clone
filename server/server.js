@@ -32,7 +32,7 @@ app.use("/api/messages", messageRoutes);
 // ------------------------------
 
 app.get("/", (req, res) => {
-    res.send("🚀 WhatsApp Clone Backend is Running!");
+    res.send("🚀 ChatConnect Backend is Running!");
 });
 
 // ------------------------------
@@ -102,7 +102,7 @@ io.on("connection", (socket) => {
 
     socket.emit(
         "welcome",
-        "Welcome to WhatsApp Clone!"
+        "Welcome to ChatConnect!"
     );
 
     // ------------------------------

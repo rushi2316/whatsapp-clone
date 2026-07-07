@@ -1,4 +1,4 @@
-# 💬 WhatsApp Clone
+# 💬 ChatConnect
 
 <div align="center">
 
@@ -15,7 +15,7 @@
 
 ## 📖 Overview
 
-**WhatsApp Clone** is a full-stack real-time messaging application built using **Node.js**, **Express.js**, **MongoDB Atlas**, and **Socket.IO**.
+**ChatConnect** is a full-stack real-time messaging application built using **Node.js**, **Express.js**, **MongoDB Atlas**, and **Socket.IO**.
 
 The project recreates the core functionality of WhatsApp, including secure authentication, one-to-one messaging, online presence, and real-time communication while following a scalable backend architecture.
 

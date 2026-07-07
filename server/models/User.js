@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
 
     status: {
         type: String,
-        default: "Hey there! I am using WhatsApp Clone."
+        default: "Hey there! I am using ChatConnect."
     },
 
     isOnline: {
