@@ -1,4 +1,8 @@
-# 💬 ChatConnect
+<p align="center">
+  <img src="assets/banner.png" alt="ChatConnect Banner" width="100%">
+</p>
+
+<h1 align="center">💬 ChatConnect</h1>
 
 <p align="center">
 
