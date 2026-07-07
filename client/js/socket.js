@@ -2,7 +2,9 @@
 // SOCKET CONNECTION
 // ======================================
 
-const socket = io("http://localhost:3000");
+const socket = io("https://whatsapp-clone-una6.onrender.com", {
+    transports: ["websocket", "polling"],
+});
 
 // ======================================
 // CONNECT
@@ -77,6 +79,7 @@ socket.on("onlineUsers", (users) => {
     }
 
 });
+
 // ======================================
 // USER LAST SEEN
 // ======================================

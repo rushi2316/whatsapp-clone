@@ -52,7 +52,7 @@ async function sendMessage() {
 
         const response = await fetch(
 
-            "http://localhost:3000/api/messages",
+            "https://whatsapp-clone-una6.onrender.com/api/messages",
 
             {
 

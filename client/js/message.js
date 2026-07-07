@@ -14,7 +14,7 @@ async function loadMessages() {
 
         const response = await fetch(
 
-            `http://localhost:3000/api/messages/${appState.currentConversation._id}`,
+            `https://whatsapp-clone-una6.onrender.com/api/messages/${appState.currentConversation._id}`,
 
             {
 

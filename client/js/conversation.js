@@ -12,7 +12,7 @@ async function openConversation(userId) {
 
         const response = await fetch(
 
-            "http://localhost:3000/api/conversations",
+            "https://whatsapp-clone-una6.onrender.com/api/conversations",
 
             {
 

@@ -2,7 +2,7 @@
 // USERS MODULE
 // ======================================
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = "https://whatsapp-clone-una6.onrender.com/api";
 
 // ======================================
 // LOAD USERS FROM DATABASE
@@ -172,25 +172,25 @@ function renderUsers() {
 
                 </div>
 
-<p class="last-message ${user.isOnline ? "online" : ""}">
+                <p class="last-message ${user.isOnline ? "online" : ""}">
 
-    ${
+                    ${
 
-        user.isOnline
+                        user.isOnline
 
-            ? "Online"
+                            ? "Online"
 
-            : (
+                            : (
 
-                appState.conversations[user._id]?.lastMessage ||
+                                appState.conversations[user._id]?.lastMessage ||
 
-                formatLastSeen(user.lastSeen)
+                                formatLastSeen(user.lastSeen)
 
-            )
+                            )
 
-    }
+                    }
 
-</p>
+                </p>
 
             </div>
 
@@ -218,6 +218,6 @@ function renderUsers() {
 
         chatList.appendChild(userCard);
 
-    });;
+    });
 
 }
