@@ -1,92 +1,54 @@
 # 💬 ChatConnect
 
-<div align="center">
+<p align="center">
 
-![Node.js](https://img.shields.io/badge/Node.js-22.x-green?style=for-the-badge&logo=node.js)
-![Express.js](https://img.shields.io/badge/Express.js-Backend-black?style=for-the-badge&logo=express)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-success?style=for-the-badge&logo=mongodb)
-![Socket.IO](https://img.shields.io/badge/Socket.IO-Real--Time-blue?style=for-the-badge&logo=socketdotio)
-![JWT](https://img.shields.io/badge/JWT-Authentication-orange?style=for-the-badge&logo=jsonwebtokens)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+A modern real-time messaging platform built with **Node.js**, **Express.js**, **MongoDB Atlas**, and **Socket.IO**.
 
-</div>
+Secure • Fast • Responsive • Cloud Deployed
+
+</p>
 
 ---
 
-## 📖 Overview
+## 🚀 Live Demo
 
-**ChatConnect** is a full-stack real-time messaging application built using **Node.js**, **Express.js**, **MongoDB Atlas**, and **Socket.IO**.
+### 🌐 Frontend (Vercel)
 
-The project recreates the core functionality of WhatsApp, including secure authentication, one-to-one messaging, online presence, and real-time communication while following a scalable backend architecture.
+https://whatsapp-clone-five-dusky.vercel.app
 
-This project was built from scratch to strengthen concepts in full-stack web development, REST APIs, WebSockets, authentication, and real-time systems.
+### ⚙ Backend (Render)
+
+https://whatsapp-clone-una6.onrender.com
+
+---
+
+## 📖 About
+
+**ChatConnect** is a full-stack real-time messaging application developed for educational purposes.
+
+It provides secure authentication, instant messaging, online user tracking, last seen functionality, dark mode, emoji support, and responsive UI while demonstrating modern full-stack development practices.
+
+> **Disclaimer**
+>
+> This project is independently developed for learning purposes and is **not affiliated with WhatsApp or Meta**.
 
 ---
 
 # ✨ Features
 
-## 🔐 Authentication
-
-- Secure User Registration
-- User Login
-- JWT Authentication
-- Password Hashing using bcrypt
-- Protected Routes
-- Persistent User Sessions
-
----
-
-## 💬 Messaging
-
-- One-to-One Chat
-- Real-Time Messaging
-- Chat History
-- Automatic Conversation Creation
-- Auto Open Recent Conversation
-- Dynamic Sidebar Updates
-
----
-
-## 🟢 Presence System
-
-- Online / Offline Status
-- Last Seen
-- Live User Presence Updates
-- Dynamic Chat Header
-
----
-
-## 👤 User Experience
-
-- User Profile Pictures
-- Responsive Sidebar
-- Logout Functionality
-- Auto Scroll to Latest Message
-
----
-
-## ⚡ Real-Time Communication
-
-- Socket.IO Integration
-- Live Message Updates
-- Instant User Status Updates
-- Real-Time Conversation Synchronization
-
----
-
-# 🚧 Upcoming Features
-
-- ✅ Message Status (✓ Sent, ✓✓ Delivered, Blue Tick)
-- ✍️ Typing Indicator
-- 📷 Image Sharing
-- 📄 File Sharing
-- 🎤 Voice Messages
-- 😊 Emoji Reactions
-- 🔔 Notifications
-- 👥 Group Chats
-- 📞 Voice Calls
-- 📹 Video Calls
+- 🔐 JWT Authentication
+- 🔒 Password Encryption using bcrypt
+- 👤 User Registration & Login
+- 💬 Real-Time Messaging with Socket.IO
+- 🟢 Online / Offline Status
+- 🕒 Last Seen Tracking
+- 😀 Emoji Picker
 - 🌙 Dark Mode
+- 📱 Responsive Design
+- 🔍 User Search
+- 🔄 Auto Conversation Creation
+- ☁ Cloud Deployment
+- 🗄 MongoDB Atlas Database
 
 ---
 
@@ -108,65 +70,117 @@ This project was built from scratch to strengthen concepts in full-stack web dev
 - MongoDB Atlas
 - Mongoose
 
+## Authentication
+
+- JWT
+- bcrypt
+
 ## Real-Time Communication
 
 - Socket.IO
 
-## Authentication
+## Deployment
 
-- JWT
-- bcryptjs
-
-## Development Tools
-
-- Nodemon
-- Git
-- GitHub
+- Vercel
+- Render
 
 ---
 
-# 📂 Project Structure
+# 📸 Screenshots
 
-```text
-whatsapp-clone/
+## Login Page
 
-├── client/
-│   ├── css/
-│   ├── js/
-│   ├── assets/
-│   └── index.html
+<p align="center">
+<img src="assets/login.png" width="750">
+</p>
+
+---
+
+## Login Successful
+
+<p align="center">
+<img src="assets/login-success.png" width="750">
+</p>
+
+---
+
+## Chat Interface (Light Mode)
+
+<p align="center">
+<img src="assets/light-theme.png" width="900">
+</p>
+
+---
+
+## Chat Interface (Dark Mode)
+
+<p align="center">
+<img src="assets/dark-theme.png" width="900">
+</p>
+
+---
+
+# 🏗 Project Structure
+
+```
+ChatConnect
 │
-├── server/
-│   ├── config/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── server.js
-│   └── package.json
+├── client
+│   ├── css
+│   ├── js
+│   ├── images
+│   ├── icons
+│   ├── uploads
+│   ├── index.html
+│   ├── login.html
+│   └── signup.html
 │
-├── .env
+├── server
+│   ├── config
+│   ├── controllers
+│   ├── middleware
+│   ├── models
+│   ├── routes
+│   └── server.js
+│
+├── assets
 ├── package.json
-├── package-lock.json
 └── README.md
 ```
 
 ---
 
-# ⚙️ Installation
+# ⚙ System Architecture
 
-## Clone the Repository
-
-```bash
-git clone https://github.com/rushi2316/whatsapp-clone.git
+```
+                Client (HTML/CSS/JS)
+                         │
+                         │
+              REST API + Socket.IO
+                         │
+                Express.js Server
+                  │            │
+                  │            │
+              MongoDB      Socket.IO
+               Atlas        Server
 ```
 
 ---
 
-## Navigate to the Project
+# 🚀 Installation
+
+## Clone Repository
 
 ```bash
-cd whatsapp-clone
+git clone https://github.com/rushi2316/chatconnect.git
+```
+
+---
+
+## Navigate
+
+```bash
+cd chatconnect
 ```
 
 ---
@@ -179,19 +193,27 @@ npm install
 
 ---
 
-## Create a .env File
+## Configure Environment Variables
+
+Create a `.env` file in the root directory.
 
 ```env
 PORT=3000
 
-MONGO_URI=YOUR_MONGODB_ATLAS_CONNECTION_STRING
+MONGO_URI=Your MongoDB Atlas Connection String
 
-JWT_SECRET=YOUR_SECRET_KEY
+JWT_SECRET=YourSecretKey
 ```
 
 ---
 
-## Start the Development Server
+## Start the Server
+
+```bash
+npm start
+```
+
+or
 
 ```bash
 npm run dev
@@ -199,7 +221,7 @@ npm run dev
 
 ---
 
-## Open in Browser
+Visit
 
 ```
 http://localhost:3000
@@ -207,140 +229,143 @@ http://localhost:3000
 
 ---
 
-# 🔒 Environment Variables
+# 🔒 Authentication Flow
 
-| Variable | Description |
-|----------|-------------|
-| PORT | Server Port |
-| MONGO_URI | MongoDB Atlas Connection String |
-| JWT_SECRET | Secret Key for JWT |
+```
+User
 
----
+↓
 
-# 📸 Screenshots
+Signup
 
-### Login Page
+↓
 
-> Coming Soon
+Password Encrypted (bcrypt)
 
----
+↓
 
-### Chat Screen
+MongoDB
 
-> Coming Soon
+↓
 
----
+Login
 
-### Online / Offline Status
+↓
 
-> Coming Soon
+JWT Generated
 
----
+↓
 
-### Last Seen
+Browser Local Storage
 
-> Coming Soon
+↓
 
----
-
-### Responsive Design
-
-> Coming Soon
+Authenticated Requests
+```
 
 ---
 
-# 🚀 Deployment
+# 💬 Messaging Flow
 
-## Frontend
+```
+Sender
 
-Coming Soon
+↓
 
----
+Socket.IO
 
-## Backend
+↓
 
-Coming Soon
+Express Server
 
----
+↓
 
-# 📚 Learning Outcomes
+MongoDB
 
-Through this project, I gained practical experience with:
+↓
 
-- REST APIs
-- JWT Authentication
-- Password Encryption
-- MongoDB Atlas
-- Socket.IO
-- Real-Time Systems
-- Express Middleware
-- MVC Architecture
-- WebSocket Communication
-- State Management
-- Frontend DOM Manipulation
+Receiver
+
+↓
+
+Instant Update
+```
 
 ---
 
-# 🛣️ Project Roadmap
+# 🌟 Highlights
 
-# 🛣️ Project Roadmap
+- Secure JWT Authentication
+- MongoDB Atlas Integration
+- Real-Time Socket Communication
+- Online Presence Detection
+- Last Seen Feature
+- Clean Responsive UI
+- Dark Mode Support
+- Emoji Integration
+- RESTful APIs
+- Cloud Deployment
 
-- [x] User Authentication
-- [x] JWT Authorization
-- [x] MongoDB Atlas Integration
-- [x] User Registration & Login
-- [x] One-to-One Conversations
-- [x] Real-Time Messaging
-- [x] Dynamic User Sidebar
-- [x] Chat History
-- [x] Online / Offline Status
+---
+
+# 🚀 Future Enhancements
+
+- [x] Authentication
+- [x] Real-Time Chat
+- [x] Online Status
 - [x] Last Seen
-- [x] Logout Functionality
-- [ ] Message Status (✓ ✓✓ Blue Tick)
-- [ ] Typing Indicator
-- [ ] Image Sharing
-- [ ] File Sharing
-- [ ] Voice Messages
-- [ ] Notifications
+- [x] Emoji Picker
+- [x] Dark Mode
+
+### Planned Features
+
 - [ ] Group Chats
-- [ ] Voice Calls
-- [ ] Video Calls
-- [ ] Responsive Mobile Layout
+- [ ] Voice Calling
+- [ ] Video Calling
+- [ ] File Sharing
+- [ ] Image Messages
+- [ ] Read Receipts
+- [ ] Push Notifications
+- [ ] Message Reactions
+- [ ] Typing Indicator
+- [ ] End-to-End Encryption
 
 ---
 
-# 🤝 Contributing
+# 📊 Project Status
 
-Contributions, suggestions, and improvements are welcome.
+✅ Completed
 
-Feel free to fork this repository and create a pull request.
+Currently deployed and fully functional.
 
 ---
 
 # 👨‍💻 Author
 
-**N. Rushi Mahidhar**
+**Rushi Mahidhar**
 
-🎓 B.Tech Computer Science Engineering
+Computer Science Undergraduate
 
-🏫 SRM University AP
+SRM University AP
 
 GitHub:
+
 https://github.com/rushi2316
 
-LinkedIn:
-https://linkedin.com/in/rushimahidhar
+---
+
+# ⭐ Support
+
+If you found this project helpful,
+
+please consider giving it a ⭐ on GitHub.
+
+It really helps!
 
 ---
 
-# ⭐ Show Your Support
-
-If you found this project helpful or interesting, please consider giving it a ⭐ on GitHub.
-
-It helps others discover the project and motivates future improvements.
-
----
-
-# 📄 License
+## 📜 License
 
 This project is licensed under the MIT License.
+
+Developed for educational and portfolio purposes.
